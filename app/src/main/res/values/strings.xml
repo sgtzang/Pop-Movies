@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Pop Movies</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="grid_item_image_content">grid_item_contents</string>
+    <string name="grid_item_contents">grid_item_contents</string>
+    <string name="grid_item_image">grid_item_image</string>
+    <string name="release_date">Small Text</string>
+</resources>
