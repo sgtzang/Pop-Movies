@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,14 +30,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.SharedPreferences;
+import android.content.Context;
 
-public class GridViewActivity extends AppCompatActivity {
+public class GridViewActivity extends ActionBarActivity {
     private static final String TAG = GridViewActivity.class.getSimpleName();
     private GridView mGridView;
     private ProgressBar mProgressBar;
     private GridViewAdapter mGridAdapter;
     private ArrayList<GridItem> mGridData;
-    private String FEED_URL = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=312666f1f4baba38887f90e4f338af17";
+    private String FEED_URL = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&";
+    private String API_KEY = "api_key=312666f1f4baba38887f90e4f338af17";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +75,11 @@ public class GridViewActivity extends AppCompatActivity {
         });
 
         //Start download
-        new AsyncHttpTask().execute(FEED_URL);
+        String targetURL = FEED_URL+API_KEY;
+        new AsyncHttpTask().execute(targetURL);
         mProgressBar.setVisibility(View.VISIBLE);
+        updatePoster();
+
     }
 
     //Downloading data asynchronously
@@ -185,5 +192,18 @@ public class GridViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void updatePoster() {
+        //AsyncHttpTask reloadPoster = new AsyncHttpTask();
+        //SharedPreferences prefs;
+        //String url = prefs.getString(getString(R.array.pref_units_options), getString(R.array.pref_units_values));
+        //System.out.print(url);
+        //reloadPoster.execute(url);
+    }
+
+  // @Override
+ //   public void onStart() {
+ //       super.onStart();
+ //       updatePoster();
+ //   }
 
 }

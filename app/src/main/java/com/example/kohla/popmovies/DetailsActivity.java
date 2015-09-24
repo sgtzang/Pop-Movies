@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 /**
  * Created by kohla on 2015-08-24.
  */
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends ActionBarActivity {
     private TextView titleTextView;
     private TextView releaseDateView;
     private TextView overViewView;
