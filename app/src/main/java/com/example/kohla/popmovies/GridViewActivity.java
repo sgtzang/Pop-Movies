@@ -39,7 +39,8 @@ public class GridViewActivity extends ActionBarActivity {
     private ProgressBar mProgressBar;
     private GridViewAdapter mGridAdapter;
     private ArrayList<GridItem> mGridData;
-    private String FEED_URL = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&";
+    private String FEED_URL = "http://api.themoviedb.org/3/discover/movie?sort_by=";
+    private String SORT_TYPE = ".desc&";
     private String API_KEY = "api_key=312666f1f4baba38887f90e4f338af17";
 
     @Override
@@ -75,8 +76,6 @@ public class GridViewActivity extends ActionBarActivity {
         });
 
         //Start download
-        String targetURL = FEED_URL+API_KEY;
-        new AsyncHttpTask().execute(targetURL);
         mProgressBar.setVisibility(View.VISIBLE);
         updatePoster();
 
@@ -185,7 +184,8 @@ public class GridViewActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivity(new Intent(this,SettingsActivity.class));
+
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 
@@ -193,17 +193,27 @@ public class GridViewActivity extends ActionBarActivity {
     }
 
     private void updatePoster() {
-        //AsyncHttpTask reloadPoster = new AsyncHttpTask();
-        //SharedPreferences prefs;
-        //String url = prefs.getString(getString(R.array.pref_units_options), getString(R.array.pref_units_values));
-        //System.out.print(url);
-        //reloadPoster.execute(url);
+        AsyncHttpTask reloadPoster = new AsyncHttpTask();
+        reloadPoster.execute(getTargetUrl());
     }
 
-  // @Override
- //   public void onStart() {
- //       super.onStart();
- //       updatePoster();
- //   }
+
+    private String getTargetUrl(){
+        return FEED_URL+getUnitsKey()+SORT_TYPE+API_KEY;
+    }
+
+    private String getUnitsKey(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String key = prefs.getString(getString(R.string.pref_units_key), getString(R.string.pref_units_popularity));
+        return key;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 100 && resultCode == RESULT_OK){
+            updatePoster();
+        }
+    }
 
 }

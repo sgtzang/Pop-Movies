@@ -96,11 +96,11 @@ public class SettingsActivity extends PreferenceActivity {
     /**
      * {@inheritDoc}
      */
-    @Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void onBuildHeaders(List<Header> target) {
-//        loadHeadersFromResource(R.xml.pref_general, target);
-    }
+//   @Override
+//    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+//    public void onBuildHeaders(List<Header> target) {
+//       loadHeadersFromResource(R.xml.pref_general, target);
+//    }
 
     /**
      * A preference value change listener that updates the preference's summary
@@ -178,6 +178,13 @@ public class SettingsActivity extends PreferenceActivity {
     public Intent getParentActivityIntent() {
         return super.getParentActivityIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     }
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_OK);
+        finish();
+    }
+
 
 
 }
