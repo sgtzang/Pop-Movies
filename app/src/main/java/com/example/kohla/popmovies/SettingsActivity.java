@@ -179,11 +179,11 @@ public class SettingsActivity extends PreferenceActivity {
         return super.getParentActivityIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         setResult(RESULT_OK);
         finish();
-    }
+    }*/
 
 
 

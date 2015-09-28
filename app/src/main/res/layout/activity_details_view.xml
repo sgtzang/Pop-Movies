@@ -50,28 +50,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/overView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/releaseDate"
-        android:layout_alignEnd="@+id/releaseDate"
-        android:layout_below="@+id/grid_item_image" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Release Date"
         android:id="@+id/textView"
         android:layout_below="@+id/title"
-        android:layout_alignRight="@+id/overView"
-        android:layout_alignEnd="@+id/overView"
         android:layout_alignLeft="@+id/releaseDate"
         android:layout_alignStart="@+id/releaseDate"
         android:textAlignment="textEnd"
         android:textSize="20dp"
         android:textIsSelectable="false"
-        android:textColor="#121cff" />
+        android:textColor="#121cff"
+        android:layout_alignRight="@+id/releaseDate"
+        android:layout_alignEnd="@+id/releaseDate" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,5 +74,18 @@
         android:textSize="20dp"
         android:textColor="#121cff"
         android:layout_below="@+id/releaseDate" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ScrollView"
+        android:layout_below="@+id/grid_item_image"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/overView" />
+    </ScrollView>
 
 </RelativeLayout>

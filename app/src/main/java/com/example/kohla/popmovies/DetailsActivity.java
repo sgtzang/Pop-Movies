@@ -7,13 +7,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 /**
  * Created by kohla on 2015-08-24.
  */
-public class DetailsActivity extends ActionBarActivity {
+public class DetailsActivity extends AppCompatActivity {
     private TextView titleTextView;
     private TextView releaseDateView;
     private TextView overViewView;

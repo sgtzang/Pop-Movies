@@ -33,7 +33,7 @@ import android.view.MenuItem;
 import android.content.SharedPreferences;
 import android.content.Context;
 
-public class GridViewActivity extends ActionBarActivity {
+public class GridViewActivity extends AppCompatActivity {
     private static final String TAG = GridViewActivity.class.getSimpleName();
     private GridView mGridView;
     private ProgressBar mProgressBar;
@@ -42,6 +42,7 @@ public class GridViewActivity extends ActionBarActivity {
     private String FEED_URL = "http://api.themoviedb.org/3/discover/movie?sort_by=";
     private String SORT_TYPE = ".desc&";
     private String API_KEY = "api_key=312666f1f4baba38887f90e4f338af17";
+    private String currentSort = "popularity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,6 +141,9 @@ public class GridViewActivity extends ActionBarActivity {
      */
     private void parseResult(String result) {
         try {
+
+            mGridData.clear();
+
             JSONObject response = new JSONObject(result);
             JSONArray posts = response.optJSONArray("results");
 
@@ -209,11 +213,24 @@ public class GridViewActivity extends ActionBarActivity {
     }
 
     @Override
+    public void onResume(){
+        super.onResume();
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String sortOption = prefs.getString(getString(R.string.pref_units_key), getString(R.string.pref_units_popularity));
+
+        if (currentSort != sortOption) {
+            currentSort = sortOption;
+            updatePoster();
+        }
+    }
+
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 100 && resultCode == RESULT_OK){
             updatePoster();
         }
-    }
+    }*/
 
 }
