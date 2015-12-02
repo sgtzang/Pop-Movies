@@ -9,22 +9,16 @@ public class GridItem {
     private String releaseDate;
     private String overView;
     private String voteAverage;
+    private String movieId;
 
     public GridItem() {
         super();
     }
 
-    public String getImage() {
-        return image;
-    }
+    public String getImage() { return image;}
+    public void setImage(String image) { this.image = image;}
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getTitle() {
-        return title;
-    }
+    public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title;  }
 
     public String getReleaseDate() { return releaseDate; }
@@ -35,4 +29,8 @@ public class GridItem {
 
     public String getVoteAverage() { return voteAverage; }
     public void setVoteAverage(String voteAverage) { this.voteAverage = voteAverage;  }
+
+    public String getMovieId() { return movieId; }
+    public void setMovieId(String movieId) { this.movieId = movieId;  }
+
 }

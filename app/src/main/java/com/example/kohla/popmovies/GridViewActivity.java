@@ -70,6 +70,7 @@ public class GridViewActivity extends AppCompatActivity {
                 intent.putExtra("releaseDate",item.getReleaseDate());
                 intent.putExtra("overView",item.getOverView());
                 intent.putExtra("voteAverage",item.getVoteAverage());
+                intent.putExtra("movieId",item.getMovieId());
 
                 //Start details activity
                 startActivity(intent);
@@ -155,6 +156,8 @@ public class GridViewActivity extends AppCompatActivity {
                 String releaseDate = post.optString("release_date");
                 String overView = post.optString("overview");
                 String voteAverage = post.optString("vote_average");
+                String movieId = post.optString("id");
+
 
                 item = new GridItem();
 
@@ -163,6 +166,7 @@ public class GridViewActivity extends AppCompatActivity {
                 item.setReleaseDate(releaseDate);
                 item.setOverView(overView);
                 item.setVoteAverage(voteAverage);
+                item.setMovieId(movieId);
 
                 mGridData.add(item);
             }
